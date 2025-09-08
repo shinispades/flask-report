@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Generator</title>
+</head>
+<body>
+    <h2>Generate Status Report</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul style="color: red;">
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <label>Work Item ID:</label><br>
+        <input type="text" name="work_item_id" required><br><br>
+
+        <label>Client Name:</label><br>
+        <input type="text" name="client_name" required><br><br>
+
+        <label>Location Type:</label><br>
+        <input type="radio" name="location_type" value="onsite" required> Onsite
+        <input type="radio" name="location_type" value="offsite" required> Offsite<br><br>
+
+        <button type="submit">Generate Report</button>
+    </form>
+</body>
+</html>
